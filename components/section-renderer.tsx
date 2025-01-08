@@ -43,7 +43,7 @@ export function SectionRenderer({
       case "cta":
         return <CTASection content={section.content as CTAContent} />;
       case "footer":
-        <FooterSection content={section.content as FooterContent} />;
+        return <FooterSection content={section.content as FooterContent} />;
       default:
         return null;
     }
