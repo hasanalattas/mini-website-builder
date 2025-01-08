@@ -31,29 +31,19 @@ export function SectionRenderer({
   const renderSection = () => {
     switch (section.type) {
       case "header":
-        return isHeaderContent(section.content) ? (
-          <HeaderSection content={section.content} />
-        ) : null;
+        return <HeaderSection content={section.content as HeaderContent} />;
       case "hero":
-        return isHeroContent(section.content) ? (
-          <HeroSection content={section.content} />
-        ) : null;
+        return <HeroSection content={section.content as HeroContent} />;
       case "features":
-        return isFeaturesContent(section.content) ? (
-          <FeaturesSection content={section.content} />
-        ) : null;
+        return <FeaturesSection content={section.content as FeaturesContent} />;
       case "testimonial":
-        return isTestimonialContent(section.content) ? (
-          <TestimonialSection content={section.content} />
-        ) : null;
+        return (
+          <TestimonialSection content={section.content as TestimonialContent} />
+        );
       case "cta":
-        return isCTAContent(section.content) ? (
-          <CTASection content={section.content} />
-        ) : null;
+        return <CTASection content={section.content as CTAContent} />;
       case "footer":
-        return isFooterContent(section.content) ? (
-          <FooterSection content={section.content} />
-        ) : null;
+        <FooterSection content={section.content as FooterContent} />;
       default:
         return null;
     }
@@ -64,28 +54,4 @@ export function SectionRenderer({
       {renderSection()}
     </EditableSection>
   );
-}
-
-function isHeaderContent(content: any): content is HeaderContent {
-  return "navItems" in content;
-}
-
-function isHeroContent(content: any): content is HeroContent {
-  return "subtitle" in content && "ctaText" in content;
-}
-
-function isFeaturesContent(content: any): content is FeaturesContent {
-  return "features" in content;
-}
-
-function isTestimonialContent(content: any): content is TestimonialContent {
-  return "quote" in content && "author" in content;
-}
-
-function isCTAContent(content: any): content is CTAContent {
-  return "buttonText" in content;
-}
-
-function isFooterContent(content: any): content is FooterContent {
-  return "copyright" in content && "links" in content;
 }
